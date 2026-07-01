@@ -1,0 +1,19 @@
+apiVersion: 1
+
+apps:
+  - type: 'deepsite-umodel-app'
+    org_id: 1
+    org_name: 'deepsite'
+    disabled: false
+    jsonData:
+      # Base URL of the MModel server (cmd/mmodel-server). The Go backend reverse-
+      # proxies /api/* and /healthz here. It must be reachable from the Grafana
+      # SERVER (container), so never "localhost".
+      #   - committed value targets the deploy host 192.168.31.128
+      #   - for local dev on Docker Desktop, set this to http://host.docker.internal:8080
+      #     (edit locally / via the Configuration page; do not commit that value)
+      apiUrl: http://192.168.31.128:18080
+    secureJsonData:
+      # Optional bearer token for the MModel server. Empty because mmodel-server is
+      # currently unauthenticated.
+      apiKey: ''
